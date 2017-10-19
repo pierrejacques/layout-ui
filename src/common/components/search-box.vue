@@ -15,17 +15,18 @@ export default {
   },
   created() {
     this.keyword = this.$route.params.q || ''
-    // TODO: initial focus
   },
   methods: {
     search() {
       if (this.keyword) {
+        // 更新路由
         this.$router.push({
           name: 'Results',
           params: {
             q: this.keyword
           }
         })
+        // 触发search事件
         this.$emit('search')
       } else {
         this.$router.push({

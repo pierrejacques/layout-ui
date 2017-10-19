@@ -29,7 +29,7 @@ export default {
       api.getSearch(this.$route.params.q)
   		.then(
   			data => {
-  				this.data = data.value
+  				this.data = data
   			},
   			error => {
   				throw error
