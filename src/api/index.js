@@ -16,10 +16,8 @@ const getScore = data => {
   data.forEach(item => {
     urls.push(item.url)
   })
-  const path = '/api/urls'
-  return axios.get(path, {
-    params: { urls }
-  })
+  const path = '/api/score'
+  return axios.post(path, { urls })
 }
 
 export default {
@@ -28,20 +26,29 @@ export default {
       then(success, fail) {
         getSearchApi('news/search', { q, count: 40 })
         .then(
-          data => {
-            getScore(data.data.value)
+          urlData => {
+            const searchData = urlData.data.value
+            getScore(searchData)
             .then(
-              data => {
-                success(data)
+              scoreData => {
+                const scores = scoreData.data.scores
+                scores.forEach((item, idx) => {
+                  searchData[idx].score = item
+                })
+                searchData.sort((a, b) => {
+                  if (a.score > b.score) { return -1 }
+                  if (a.score < b.score) { return 1 }
+                })
+                success(searchData)
               },
               error => {
-                console.log('evaluating server failed')
+                console.error('evaluating server failed')
                 fail()
               }
             )
           },
           error => {
-            console.log('fail to reach search engine')
+            console.error('fail to reach search engine')
             fail()
           }
         )
