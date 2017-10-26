@@ -24,7 +24,7 @@ export default {
 	getSearch(q) {
     return {
       then(success, fail) {
-        getSearchApi('news/search', { q, count: 40 })
+        getSearchApi('news/search', { q, count: 8 })
         .then(
           urlData => {
             const searchData = urlData.data.value
