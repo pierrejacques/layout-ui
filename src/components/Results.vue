@@ -1,5 +1,6 @@
 <template>
   <div class="search">
+    <router-link :to="{ name: 'Home' }">回到主页</router-link>
     <search-box @search="search"></search-box>
     <search-result :data = "data"></search-result>
   </div>

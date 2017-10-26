@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Search from '@/components/Search'
 import Upload from '@/components/Upload'
 import Results from '@/components/Results'
+import Url from '@/components/Url'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/upload',
       name: 'Upload',
       component: Upload
+    },
+    {
+      path: '/url',
+      name: 'Url',
+      component: Url
     }
   ]
 })

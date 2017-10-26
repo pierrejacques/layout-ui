@@ -11,7 +11,7 @@ const getSearchApi = (type, params = {}) => {
 	})
 }
 
-const getScore = data => {
+const postScore = data => {
   const urls = []
   data.forEach(item => {
     urls.push(item.url)
@@ -28,7 +28,7 @@ export default {
         .then(
           urlData => {
             const searchData = urlData.data.value
-            getScore(searchData)
+            postScore(searchData)
             .then(
               scoreData => {
                 const scores = scoreData.data.scores
@@ -55,8 +55,9 @@ export default {
       }
     }
   },
-  getSuggestion() {
-
-  },
-  getScore,
+  getScore(url) {
+    return axios.get('api/score', {
+      params: { url }
+    })
+  }
 }

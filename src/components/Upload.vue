@@ -1,5 +1,7 @@
 <template lang="html">
   <div class="upload">
+    <router-link :to="{ name: 'Home' }">回到主页</router-link>
+    <br/>
     <vue-file-upload
       url = "/api/image"
       ref = "vueFileUploader"
