@@ -4,7 +4,7 @@
     <h2>输入网站的url以获取该网站的美感评分</h2>
     <form @submit.prevent="submit">
       <input type="text" name="" value="" v-model="url">
-      <input type="submit" name="" value="评分">
+      <button class="submit-btn" @click="submit">评分</button>
     </form>
     <h1>{{score}}</h1>
   </div>

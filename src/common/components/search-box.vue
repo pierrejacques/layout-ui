@@ -1,7 +1,7 @@
 <template lang="html">
   <form @submit.prevent="search">
     <input type="text" v-model="keyword" placeholder="在此输入你想搜索的内容">
-    <input type="submit" value="搜索">
+    <button class="submit-btn" @click="search">搜索</button>
   </form>
 </template>
 
